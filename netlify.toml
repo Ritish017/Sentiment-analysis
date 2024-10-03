@@ -1,0 +1,23 @@
+[build]
+  # Command to run during the build phase
+  command = "python3 -m pip install -r requirements.txt"
+
+  # The directory where your Flask app will serve files from
+  publish = "public"
+
+  # Specify the functions directory to use for Netlify Functions
+  functions = "functions"
+
+[functions]
+  # Point to where the Flask app Python files live
+  directory = "functions"
+
+[build.environment]
+  # Python version to use
+  PYTHON_VERSION = "3.9"
+
+[[redirects]]
+  # Redirect any requests to Netlify functions
+  from = "/*"
+  to = "/.netlify/functions/app"
+  status = 200
